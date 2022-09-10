@@ -26,11 +26,15 @@ int main()
 
     reverseNumber = n1<<n2<<n3<<n4<<n5;
 
-    if (/* condition */)
+    cout<<endl<<"Reverse number: "<<reverseNumber;
+
+    if (reverseNumber == number)
     {
-        /* code */
+        cout<<endl<<"Reverse five digit number is same as original number.";
     }
-    
+    else
+        cout<<endl<<"Reverse five digit number is not same as original number.";
+
     
     return 0;
 }
