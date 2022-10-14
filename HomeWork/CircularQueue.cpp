@@ -90,6 +90,12 @@ void dequeue()
         {
             q.f == 0;
         }
+        else if (q.f == q.r)
+        {
+            q.f = -1;
+            q.r = -1;
+        }
+        
         else
         {
             q.f++;
@@ -111,16 +117,19 @@ void display()
         {
             for (i = 0; i <= 4; i++)
             {
-                cout<<endl<<i<<" -- "<<q.qu[i];
+                cout<<endl<<i<<" <--> "<<q.qu[i];
             }
             for (i = 0; i <=q.r ; i++)
             {
-                cout<<endl<<i<<" -- "<<q.qu[i];
+                cout<<endl<<i<<" <--> "<<q.qu[i];
             } 
         }
         else
         {
-            cout<<endl<<i<<" -- "<<q.qu[i];
+            for ( i = q.f; i <= q.r; i++)
+            {
+                cout<<endl<<i<<" <--> "<<q.qu[i];
+            }
         }  
     }
 }
