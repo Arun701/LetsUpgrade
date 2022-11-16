@@ -1,10 +1,6 @@
 #include<iostream>
 using namespace std;
 
-void enqueue();
-void dequeue();
-void disp();
-
 struct queue
 {
     int qu[5];
@@ -14,6 +10,10 @@ typedef struct queue queue;
 
 queue q;
 
+void enqueue();
+void dequeue();
+void disp();
+
 int main()
 {
     int ch;
@@ -22,11 +22,10 @@ int main()
 
     do
     {
-        cout<<endl<<"Menu for simple queue";
+        cout<<endl<<"...Menu for queue...";
         cout<<endl<<"1. Enqueue";
         cout<<endl<<"2. Dequeue";
         cout<<endl<<"3. Display";
-        cout<<endl<<"4. Exist";
 
         cout<<endl<<"Enter the choise: ";
         cin>>ch;
@@ -43,9 +42,8 @@ int main()
                 disp();
                 break;
         }
-
     } while (ch >= 1 && ch <= 3);
-    
+
     return 0;
 }
 
@@ -53,20 +51,18 @@ void enqueue()
 {
     if (q.r == 4)
     {
-        cout<<endl<<"Queue is full...";
+        cout<<endl<<"Sorry, Queue is full...";
     }
-    else 
+    else
     {
-        if ( q.f == -1 && q.r == -1 )
+        if (q.f == -1 && q.r == -1)
         {
-            q.f == 0;
-            q.r == 0;
-        } 
-        else
-        {
-            q.r ++;
+            q.f = 0;
+            q.r = 0;
         }
-        cout<<endl<<"Enter the element in queue: ";
+        else
+            q.r++;
+        cout<<endl<<"Enter the element in the queue: ";
         cin>>q.qu[q.r];
     }
 }
@@ -75,20 +71,18 @@ void dequeue()
 {
     if (q.f == -1 && q.r == -1)
     {
-        cout<<endl<<"Queue is empty";
+        cout<<endl<<"Sorry, Queue is empty...";
     }
     else
     {
-        cout<<endl<<q.qu[q.f]<<" dequeued...";
+        cout<<endl<<q.qu[q.f]<<" is dequeued...";
         if (q.f == q.r)
         {
             q.f = -1;
             q.r = -1;
         }
         else
-        {
             q.f++;
-        }
     }
 }
 
@@ -96,11 +90,11 @@ void disp()
 {
     if (q.f == -1 && q.r == -1)
     {
-        cout<<endl<<"Queue is empty...";
+        cout<<endl<<"Sorry, Queue is empty...";
     }
     else
     {
-        for (int i = q.f; i<= q.r; i++)
+        for (int i = q.f; i <= q.r; i++)
         {
             cout<<endl<<q.qu[i];
         }

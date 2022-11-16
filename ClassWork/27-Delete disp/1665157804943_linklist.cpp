@@ -1,0 +1,120 @@
+#include<iostream>
+#include<iomanip>
+using namespace std;
+struct linklist
+{
+    int data;
+    struct linklist *next;
+};
+typedef struct linklist list;
+list * first;
+
+void creat( list *);
+void ins(list *);
+void del( list *);
+void disp(list *);
+
+int main()
+{
+    first=NULL;
+    int ch;
+
+    do
+    {
+          cout<<endl<<"MENU FOR LINK LIST"<<endl;
+          cout<<endl<<" 1. CREATE";
+          cout<<endl<<" 2. INSERT";
+          cout<<endl<<" 3. DELETE";
+          cout<<endl<<" 4. DIAPLAY";
+          cout<<endl<<" 5. EXIT";
+          cout<<endl<<endl<<"Enter your choice:";
+          cin>>ch;
+
+          switch(ch)
+          {
+                case 1:
+                        creat(first);
+                        break;
+                case 2:
+                        ins(first);
+                        break;
+                case 3:
+                        del(first);
+                        break;
+                case 4:
+                        disp(first);
+                        break;
+          }
+
+    } while (ch>=1&&ch<=4);
+
+    return 0;
+}
+void creat(list * nn)
+{
+    if(nn==NULL)
+    {
+        first =new list;
+        cout<<endl<<"Enter data :";
+        cin>>first->data;
+        first->next=NULL;
+
+        cout<<endl<<"First node is create";
+    }
+    else
+        cout<<endl<<"List is created , please insert now.";
+}
+void ins(list * nn)
+{
+    if(nn==NULL)
+        cout<<endl<<"please create first";
+    else
+    {
+        while(nn->next!=NULL)
+            nn=nn->next;
+
+        nn->next= new list;
+        cout<<endl<<"Enter data :";
+        cin>>nn->next->data;
+        nn->next->next=NULL;
+
+        cout<<endl<<"node is create";
+    }
+}
+
+void del(list * nn)
+{
+    if(nn==NULL)
+        cout<<endl<<"SORRY LIST IS EMPTY ...";
+    else if(nn->next==NULL) 
+    {
+        cout<<endl<<nn->data<<" is deleted .";
+        delete(nn);
+        first=NULL;
+    }
+    else
+    {
+        while(nn->next->next!=NULL)
+                nn=nn->next;
+
+        cout<<endl<<nn->next->data<<" is deleted .";
+        delete(nn->next);
+        nn->next=NULL;
+    }
+}
+void disp(list * nn)
+{
+    if(nn==NULL)
+        cout<<endl<<"SORRY LIST IS EMPTY .";
+    else
+    {
+        cout<<endl<<"ELEMENTS IN LIST ARE"<<endl;
+
+        while(nn!=NULL)
+        {
+            cout<<setw(4)<<nn->data<<" -> ";
+            nn=nn->next;
+        } 
+        cout<<"NULL";   
+    }
+}
